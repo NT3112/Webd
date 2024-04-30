@@ -6,7 +6,7 @@ import Categories from '../components/Categories';
 function HomePage() {
   return (
     <div>
-     {/* <Navbar /> */}
+     <Navbar />
      <Slide />
      <Categories />
     </div>
