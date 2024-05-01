@@ -1,4 +1,4 @@
-import React, { useState, useContext, useTheme } from "react";
+import React, { useState } from "react";
 import "../styles/createlisting.scss";
 import Navbar from '../components/Navbar';
 import { categories, types, facilities } from "../data";
@@ -152,7 +152,6 @@ const CreateListing = () => {
                 </div>
               ))}
             </div>
-
             <h3>What type of place will the guests have?</h3>
             <div className="type-list">
               {types.map((item, index) => (
@@ -345,7 +344,7 @@ const CreateListing = () => {
 
           <div className="create-listing_step2">
             <h2>Step 2: Make your place stand out</h2>
-            <br />
+            <hr />
             <h3>Tell the guests what your place has to offer</h3>
             <div className="amenities">
               {facilities.map((item, index) => (
@@ -363,7 +362,6 @@ const CreateListing = () => {
             </div>
 
             <h3>Add some photos of your place</h3>
-            <br />
             <DragDropContext onDragEnd={handleDragPhoto}>
               <Droppable droppableId="photos" direction="horizontal">
                 {(provided) => (
@@ -476,7 +474,7 @@ const CreateListing = () => {
                 type="text"
                 placeholder="Highlight Description"
                 name="highlightDesc"
-                value={formDescription.price}
+                value={formDescription.highlightDesc}
                 onChange={handleChangeDescription}
                 required
               />
@@ -486,6 +484,8 @@ const CreateListing = () => {
                 type="number"
                 placeholder="100"
                 name="price"
+                value={formDescription.price}
+                onChange={handleChangeDescription}
                 className="price"
                 required
               />
@@ -499,3 +499,4 @@ const CreateListing = () => {
 };
 
 export default CreateListing;
+
