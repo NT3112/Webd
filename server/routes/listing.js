@@ -16,6 +16,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage })
 
 router.post("/create",upload.array("listingPhotos"), async(req,res) => {
+    console.log("hi")
     try{
         const { creator, category, type, streetAddress, aptSuite, city, province, country, guestCount, bedroomCount, bedCount, bathroomCount, amenities, title, description, highlight, highlightDesc, price} = req.body
 
@@ -33,7 +34,7 @@ router.post("/create",upload.array("listingPhotos"), async(req,res) => {
             streetAddress, aptSuite, city, province, country, guestCount, bedroomCount, bedCount, bathroomCount, amenities, listingPhotoPaths, title, description, highlight, highlightDesc, price 
     })
     await newListing.save()
-
+    console.log("hello")
     res.status(200).json(newListing)
     } catch (err) {
         res.status(409).json({ message : "Failed to create a listing", error: err.message})

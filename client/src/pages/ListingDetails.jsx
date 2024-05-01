@@ -7,18 +7,21 @@ import 'react-date-range/dist/theme/default.css';
 import { DateRange } from 'react-date-range';
 import Loader from '../components/Loader';
 import Navbar from '../components/Navbar';
+
 const ListingDetails = () => {
   const [loading, setLoading] = useState(true);
-
   const {listingId} = useParams();
   const [listing, setListing] = useState(null);
 
+
   const getListingDetails = async () => {
+    
     try {
       const response = await fetch(`http://localhost:3001/properties/${listingId}`,
         {method: 'GET'}, );
-      
+        console.log("tell me")
       const data = await response.json();
+      console.log("tell me2")
       setListing(data);
       setLoading(false);
     }
@@ -65,11 +68,11 @@ const ListingDetails = () => {
         <p>{listing.guestCount} guests - {listing.bedroomCount} bedroom - {listing.bedCount} bed - {listing.bathroomCount} bath</p>
         <hr />
 
-        <div className='profile'>
+        {/* <div className='profile'>
           <img src={`http://localhost:3001/${listing.creator.profileImagePath.replace("public", "")}`} />
           <h3>Hosted by {listing.creator.firstName} {listing.creator.lastName}</h3>
         </div>
-        <hr />
+        <hr /> */}
 
         <h3>Description</h3>
         <p>{listing.description}</p>
